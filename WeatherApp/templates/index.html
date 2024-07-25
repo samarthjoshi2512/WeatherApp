@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/af8d8e3112.js" crossorigin="anonymous"></script>  
+    <title>Document</title>
+</head>
+<body style="text-align: center;background-image:url('https://cdn.wallpapersafari.com/18/33/WjoFwi.jpg')">
+        <!-- Upper Part -->
+        <div style="padding: 5%; height: 50%;">
+            <h1 class="mb-5">Weather App</h1>
+            <form method="post" class="d-flex flex-column justify-content-center">
+                <input class="form-control me-2 w-100" type="search" placeholder="Search Location" aria-label="Search" name="search">
+                <div class="d-flex justify-content-center row m-4">
+                    <button class="btn btn-primary col-3 " type="submit">Search</button>
+                </div>
+            </form>
+            
+        </div>
+
+        <!-- Bottom part -->
+        {%if error%}
+            <div class="alert alert-danger alert-dismissible w-50" role="alert" style="position:absolute; right:25%; margin-top:125px; backface-visibility: hidden; background-repeat: no-repeat; backdrop-filter: blur(7px);">
+                <i class="fa-sharp fa-solid fa-circle-exclamation"></i>
+                Place not found!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {%endif%}    
+        {% if output%}
+            <div class="d-flex justify-content-center " style="padding: 5%; height: 50%; ">
+                <div class=" w-50">
+                    <div class="row" style="background-color: #B9E9FC;">
+                        <div class="col-12 " style="padding: 15px; border: solid; border-bottom: none; border-color: #94cdff;">
+                            <b>cityname:</b>
+                            {{cityname}}
+                        </div>
+                    </div>
+                    <div class="row" style="background-color: #B9E9FC;">
+                        <div class="col-6 " style="padding: 15px; border: solid; border-right:none; border-bottom: none; border-color: #94cdff;">
+                             <b>description:</b>
+                            {{weatherData["description"]}}
+                        </div>
+                        <div class="col-6 " style="padding: 15px; border: solid; border-bottom: none; border-color: #94cdff;">
+                            <b>Weather Status:</b>
+                           <image src="http://openweathermap.org/img/w/{{weatherData["icon"]}}.png">
+                        </div>
+                    </div>
+                    <div class="row" style="background-color: #B9E9FC;">
+                        <div class="col-4 " style="padding: 15px; border: solid; border-right:none; border-color: #94cdff;">
+                            <b>Temperature:</b>
+                            {{weatherData["temperature"]}}&nbsp&degC
+                        </div>
+                        <div class="col-4 " style="padding: 15px; border: solid; border-right:none; border-color: #94cdff;">
+                            <b>Max Temperature:</b>
+                            {{weatherData["temp_max"]}}&nbsp&degC
+                        </div>
+                        <div class="col-4 " style="padding: 15px; border: solid; border-color: #94cdff;">
+                            <b>Min Temperature :</b>
+                            {{weatherData["temp_min"]}}&nbsp&degC
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {%endif%}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    </body>
+</html>
